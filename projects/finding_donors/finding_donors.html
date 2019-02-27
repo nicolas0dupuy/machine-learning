@@ -13707,8 +13707,17 @@ With the default parameters, both Decision Trees and Ada Boost give reasonnable 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:
-The Ada Boost model will perform a series of decision tree classification. Each decision tree classification consists on subdividing the set of individuals in two groups, then subdividing those groups again and again, aiming for the categories of wealthy and modest individuals to be distinct. In the end, Ada Boost synthesizes the set of results by merging them, taking into account their individual efficiency. As a result, the model learns from previous mistakes, but do not completely forget its first success.</strong></p>
+<p>** Second submission answer :
+For the purpose of predicting weither an individual earns more than 50k dollars a year or less, I suggest a method named Ada Boost with Decision Tree to learn an optimal classification scheme from out database past clients. This method in itself is composed of two steps :</p>
+<ul>
+<li>Decision Tree in itself is an efficient and simple method for data classification. It could have been used alone but Ada Boost which I will describe later will improve our results. A decision tree algorithm looks at the data, examines for each category given (for instance here age, work class, education...) what is the best separation between the two classes (earn more than 50k dollars, and less than 50k dollars. After having tested all the category, it will chose the one where it obtained the clearest separation. It will then repeat the process for each subgroup, and iterate until some stoping condition is met. As a result you can imagine that given an individual, the Decision Tree Classifier will apply a tree of condition (age greater than 35 year old, the marital statut : married, then educational level = ...) to give in the end its prediction based on what it learned from our data.</li>
+<li>Then Ada Boost is another method which aims at improving the results. After a single run of the decision tree classifier (which will be called the weak learner, because it will be employed as a submethod), it will remains individual which have been misclassified. The Ada Boost Classifier will require the weak learner to work again, but with a better attention to classify correctly the points which were missclassified. And it will iterate this process of trying to improve the results every time.
+In the end, the Decision Tree Classifier will have worked, let us say 50 times, and Ada Boost will take the 50 result in consideration, pay attention to which one is the most accurate, and extract the more relevant information as possible by comparing them and then produce a final classification scheme.</li>
+<li>+++++++++++++++++++++++++++++++++++++++</li>
+<li>(First submission Answer):
+The Ada Boost model will perform a series of decision tree classification. Each decision tree classification consists on subdividing the set of individuals in two groups, then subdividing those groups again and again, aiming for the categories of wealthy and modest individuals to be distinct. In the end, Ada Boost synthesizes the set of results by merging them, taking into account their individual efficiency. As a result, the model learns from previous mistakes, but do not completely forget its first success. 
+** </li>
+</ul>
 
 </div>
 </div>
@@ -13897,9 +13906,15 @@ Final F-score on the testing data: 0.7389
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:
+<p>**Answer:
 The model optimization allowed for an improvement of the accuracy and F-scores. However it should be underlined
-that the same set has been used for multiple hyperparameter tunings so it is hard to say weither or not I am overfitting the data with this tuning. I used a cv of 8 for security. </strong></p>
+that the same set has been used for multiple hyperparameter tunings so it is hard to say weither or not I am overfitting the data with this tuning. I used a cv of 8 for security.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+<ul>
+<li>Second submission addition :
+The naive estimation has an accuracy of 0.2478, so our model is effectively more accurate with an accuracy of 0.8661 (87% of the prediction are right). More important is that the F-score with a beta of 0.5 (aiming at a better detection of people earning more than 50k dollars a year) is only of 0.2917 for the naive model and 0.7389 for the optimized model, which then provides us with a good estimation of wealthy individuals.
+**</li>
+</ul>
 
 </div>
 </div>
@@ -13928,8 +13943,12 @@ that the same set has been used for multiple hyperparameter tunings so it is har
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: I would say that the capital-gain, capital-loss, then the education level, hour per week, then
-the native country are the five most significant features in this order.</strong></p>
+<p>**Answer: I would say that the capital-gain, capital-loss, then the education level, hour per week, then
+the native country are the five most significant features in this order.</p>
+<ul>
+<li>Second submission complement : One could expect the capital-gain to be the most important feature as the more one individual earn, the more he or she can invest and the more its investment can gain in value. For the same reason, the capital loss may be an important criteria, although one individual is less likely to invest in a value which value decreases. The education level is then a next important criteria as high education level allows for better paid jobs in average. The hour per week of working is important, but less than the other knowing that working a lot as a house keeper will probaly lead to a lower pay than working less as a consultant in an area in demand. The native country should then show if for an immigrant it is as difficult than for an US citizen to access to a high paid job.
+**</li>
+</ul>
 
 </div>
 </div>
@@ -14057,7 +14076,8 @@ the native country are the five most significant features in this order.</strong
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:
-The age is much more important than what I imagined. Also the hour per weeks has more importance than the education-num, however the histogram shows that both category are almost of the same importance. </strong></p>
+The age is much more important than what I imagined. Also the hour per weeks has more importance than the education-num, however the histogram shows that both category are almost of the same importance.
+Second submission complement : The feature weight of capital-gain shows that it is indeed the most relevant feature to take in consideration. The next one is the age, that I didn't foresee, and it could have been predicted as a young individual will either have to study, or start a low paid job first without experience. The capital-loss feature is then an important feature but less than the two others (in almost equality with age on the graphics) but one can think that for an individual to make a high capital-loss, he/she should first have a sufficiently highly paid job to have done this investment. The hour per week are then slightly less important but it translates the fact that the more one works, the more one earns. It has however a weight around 0.1 so it is not neglectable. The same applies to education-num, translating the fact that the higher educated one is, the more chance one has to access highly qualified jobs. Those four features (capital-gain excepted) are of allmost equal importance. It can be seen that the five features together amounts for the half of the total importance over the 13 features.</strong></p>
 
 </div>
 </div>
